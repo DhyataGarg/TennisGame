@@ -1,6 +1,6 @@
  var canvas, canvasContext, ballX = 50, ballY = 50, ballSpeedX = 10, ballSpeedY = 4, paddle1Y = 250, 
     paddle2Y = 250, player1Score = 0, player2Score = 0, showingWinSreen = false;
-    const PADDLE_HEIGHT = 100, PADDLE_THICKNESS = 10, WINNING_SCORE = 3;
+    const PADDLE_HEIGHT = 100, PADDLE_THICKNESS = 5, WINNING_SCORE = 3;
 
     function calculateMousePos (evt) {
         var rect = canvas.getBoundingClientRect();
@@ -67,7 +67,7 @@
 
         ballX += ballSpeedX;
         ballY += ballSpeedY;
-        if(ballX < 0) {
+        if(ballX < 15) {
             if(ballY > paddle1Y && ballY < paddle1Y + PADDLE_HEIGHT){
                 ballSpeedX = -ballSpeedX;
                 var deltaY = ballY - (paddle1Y + PADDLE_HEIGHT/2);
@@ -77,7 +77,7 @@
                 ballReset();
             }
         }
-        if(ballX > canvas.width) {
+        if(ballX > canvas.width - 15) {
             if(ballY > paddle2Y && ballY < paddle2Y + PADDLE_HEIGHT){
                 ballSpeedX = -ballSpeedX;
                 var deltaY = ballY - (paddle2Y + PADDLE_HEIGHT/2);
@@ -115,9 +115,9 @@
         
         drawNet();
         // next link draws the left player paddle
-        colorRect(0, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white')
+        colorRect(5, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white')
         // next link draws the right computer paddle
-        colorRect(canvas.width - PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white')
+        colorRect(canvas.width - PADDLE_THICKNESS - 5, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white')
         // next line draws the ball
         colorCircle(ballX, ballY, 10, 'white');
 

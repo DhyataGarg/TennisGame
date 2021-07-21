@@ -1,0 +1,18 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div{
+    display: none;
+}
+
+@media (max-width: 850px) {
+    div{
+        display: block;
+    }
+    canvas{
+        display: none;
+    }
+}
